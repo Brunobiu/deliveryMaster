@@ -8,13 +8,12 @@ body{
 
 .floating-btn {
     position: fixed;
-    bottom: 20px; /* Distância do botão até a parte inferior da página */
-    left: 20px; /* Distância do botão até a margem esquerda da página */
+    bottom: 0px; /* Distância do botão até a parte inferior da página */
+    left: 0px; /* Distância do botão até a margem esquerda da página */
     background-color: #107a0e; /* Cor de fundo do botão */
     color: white; /* Cor do texto do botão */
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para um efeito visual */

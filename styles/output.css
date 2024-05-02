@@ -1915,9 +1915,9 @@ video {
   border-style: none;
 }
 
-.border-gray-500 {
+.border-gray-400 {
   --tw-border-opacity: 1;
-  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
 .border-red-500 {
@@ -2676,9 +2676,9 @@ body{
 
 .floating-btn {
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
   /* Distância do botão até a parte inferior da página */
-  left: 20px;
+  left: 0px;
   /* Distância do botão até a margem esquerda da página */
   background-color: #107a0e;
   /* Cor de fundo do botão */
@@ -2686,7 +2686,6 @@ body{
   /* Cor do texto do botão */
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

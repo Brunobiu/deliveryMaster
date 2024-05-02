@@ -6,7 +6,7 @@ const cartTotal = document.getElementById("cart-total")
 const checkountBtn = document.getElementById("checkount-btn")
 const closeModalBtn = document.getElementById("close-modal-btn")
 const cartCounter = document.getElementById("vart-count")
-const andressInput = document.getElementById("andress")
+const andressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
 
 
@@ -107,10 +107,7 @@ function updateCartModal(){
                 </div>
             </div>
             
-        `;
-
-
-
+        `
 
         // Adiciona um ouvinte de evento para remover o item do carrinho
         const removeButton = cartItemElement.querySelector('.remove-from-cart-btn');
@@ -136,11 +133,6 @@ function updateCartModal(){
                 }).showToast();
             }
         });
-
-
-
-
-
         
 
         total += item.price * item.quantity;
@@ -224,18 +216,33 @@ checkountBtn.addEventListener("click", function(){
     }
 
     //Enviar o pedodp para api whats
-    const cartItems = cart.map((item) => {
-        return(
-            ` ${item.name} Quantidade: (${item.quantity}) Valor: R$${item.price} |`
-        )
-    }).join("")
+    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-    const message = encodeURIComponent(cartItems)
-    const phone = "64992580980"
-    
-    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${andressInput.value}`, "_blank")
+    // Formatando a mensagem com os itens do carrinho e o valor total
+    const cartItemsFormatted = cart.map((item) => {
+        // Formatando o nome em negrito e adicionando quebra de linha
+        return `*${item.name}* \nQtd: (${item.quantity}) \nValor: R$${item.price.toFixed(2)} \n\n`;
+    }).join("") + `*Total:* R$${total.toFixed(2)} \n\n`;
 
+    // Codificando a mensagem para URL
+    const encodedMessage = encodeURIComponent(cartItemsFormatted);
+
+    // Número de telefone para o WhatsApp
+    const phoneNumber = "64992580980";
+
+    // Formatando o endereço em negrito
+    const formattedAddress = `*Endereço:* ${andressInput.value}`;
+
+    // Construindo o link do WhatsApp com a mensagem e o endereço
+    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage} ${formattedAddress}`;
+
+    // Abrindo uma nova janela com o link do WhatsApp
+    window.open(whatsappLink, "_blank");
+
+    // Limpando o carrinho
     cart = [];
+
+    // Atualizando a exibição do carrinho, se necessário
     updateCartModal();
 
 })
@@ -246,7 +253,7 @@ function checkRestaurantOpen(){
 
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 01 && hora < 24;
+    return hora >= 10 && hora < 23;
     //Restaurante esta aberto
 }
 
