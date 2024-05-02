@@ -77,28 +77,28 @@ function updateCartModal(){
 
     cart.forEach(item => {
         const cartItemElement = document.createElement("div");
-        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col")
+        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col");
 
         cartItemElement.innerHTML = `
             <div class="flex items-center justify-between">
-            <div>
-                <p class="font-bold">${item.name}</p>
-                <p>Qtd: ${item.quantity}</p>
-                <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
+                <div>
+                    <p class="font-bold">${item.name}</p>
+                    <p>Qtd: ${item.quantity}</p>
+                    <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
+                </div>
+            
+                <div>
+                    <button class="remove-from-cart-btn" data-name="${item.name}">
+                        Remover
+                    </button>
+                </div>
             </div>
-        
-            <div>
-                <button class="remove-from-cart-btn" data-name="${item.name}">
-                    Remover
-                </button>
-            </div>
-         </div>
-        `
+        `;
 
-        total += item.price * item.quantity
+        total += item.price * item.quantity;
 
-        cartItemContainer.appendChild(cartItemElement)
-    })
+        cartItemContainer.appendChild(cartItemElement);
+    });
 
     cartTotal.textContent = total.toLocaleString("pt-BR", {
         style: "currency",
@@ -107,6 +107,7 @@ function updateCartModal(){
 
     cartCounter.innerHTML = cart.length;
 }
+
 
 
 //Funçaõ pra remover item do carrinho
@@ -197,7 +198,7 @@ function checkRestaurantOpen(){
 
     const data = new Date();
     const hora = data.getHours();
-    return hora >= 00 && hora < 24;
+    return hora >= 01 && hora < 24;
     //Restaurante esta aberto
 }
 
