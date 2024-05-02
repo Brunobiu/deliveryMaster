@@ -62,9 +62,22 @@ function addToCart(name, price){
             name,
             price,
             quantity: 1,
+
+            
         })
 
     }
+    Toastify({
+        text:  "Adicionado ao Carinho!",
+        duration: 5000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+            background: "#0c4203",
+        },
+    }).showToast();
 
     updateCartModal()
 }
@@ -77,7 +90,7 @@ function updateCartModal(){
 
     cart.forEach(item => {
         const cartItemElement = document.createElement("div");
-        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col");
+        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col", "bg-gray-300");
 
         cartItemElement.innerHTML = `
             <div class="flex items-center justify-between">
@@ -93,7 +106,42 @@ function updateCartModal(){
                     </button>
                 </div>
             </div>
+            
         `;
+
+
+
+
+        // Adiciona um ouvinte de evento para remover o item do carrinho
+        const removeButton = cartItemElement.querySelector('.remove-from-cart-btn');
+        removeButton.addEventListener('click', () => {
+            // Remove o item do carrinho
+            const itemName = removeButton.getAttribute('data-name');
+            const index = cart.findIndex(item => item.name === itemName);
+            if (index !== -1) {
+                cart.splice(index, 1);
+                // Atualiza o modal do carrinho
+                updateCartModal();
+                // Exibe o Toastify após a remoção do item
+                Toastify({
+                    text: "Item removido do carrinho!",
+                    duration: 4000,
+                    close: true,
+                    gravity: "top", // `top` or `bottom`
+                    position: "right", // `left`, `center` or `right`
+                    stopOnFocus: true, // Prevents dismissing of toast on hover
+                    style: {
+                        background: "#b3121d",
+                    },
+                }).showToast();
+            }
+        });
+
+
+
+
+
+        
 
         total += item.price * item.quantity;
 
@@ -206,7 +254,7 @@ const spanItem = document.getElementById("date-span")
 const isOpen = checkRestaurantOpen();
 
 if(isOpen){
-    spanItem.classList.remove("bg-re-500")
+    spanItem.classList.remove("bg-red-500")
     spanItem.classList.add("bg-green-600")
 }else {
     spanItem.classList.remove("bg-green-600")
