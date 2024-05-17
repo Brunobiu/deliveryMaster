@@ -1,269 +1,216 @@
 const menu = document.getElementById("menu")
 const cartBtn = document.getElementById("cart-btn")
 const cartModal = document.getElementById("cart-modal")
-const cartItemContainer = document.getElementById("cart-items")
+const cartItemsContainer = document.getElementById("cart-items")
 const cartTotal = document.getElementById("cart-total")
-const checkountBtn = document.getElementById("checkount-btn")
+const checkoutBtn = document.getElementById("checkout-btn")
 const closeModalBtn = document.getElementById("close-modal-btn")
-const cartCounter = document.getElementById("vart-count")
-const andressInput = document.getElementById("address")
+const cartCounter = document.getElementById("cart-count")
+const addressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
 
 
 let cart = [];
 
-//Abrir modaldo carrinho
-cartBtn.addEventListener("click", function(){
-    updateCartModal();
-    cartModal.style.display = "flex"
+// Abrir o modal do carrinho
+cartBtn.addEventListener("click", function() { 
+  updateCartModal();
+  cartModal.style.display = "flex"
 })
 
-//Fechar modal quando clicar fora
-cartModal.addEventListener("click", function(event) {
-    if(event.target === cartModal){
-        cartModal.style.display = "none"
-    }
-})
-
-//fechar modal no botao
-closeModalBtn.addEventListener("click", function(){
+// Fechar o modal quando clicar fora
+cartModal.addEventListener("click", function(event){
+  if(event.target === cartModal){
     cartModal.style.display = "none"
+  }
+})
+
+closeModalBtn.addEventListener("click", function(){
+  cartModal.style.display = "none"
 })
 
 
-//Adiconar no carinho
 menu.addEventListener("click", function(event){
+  // console.log(event.target)
+  let parentButton = event.target.closest(".add-to-cart-btn")
 
-    let parentButton = event.target.closest(".add-to-cart-btn")
-
-    if(parentButton){
-        const name = parentButton.getAttribute("data-name")
-        const price = parseFloat(parentButton.getAttribute("data-price"))
-
-        //Adiconar no carrinho
-        addToCart(name, price)
-
-    }
-
-
+  if(parentButton){
+    const name = parentButton.getAttribute("data-name")
+    const price = parseFloat(parentButton.getAttribute("data-price"))
+    addToCart(name, price)
+  }
 
 })
 
 
-//Finção pra adicionar no carinho
+// Função para adicionar no carrinho
 function addToCart(name, price){
-    const existingItem = cart.find(item => item.name === name)   
+  const existingItem = cart.find(item => item.name === name)
 
-    if(existingItem){
-        existingItem.quantity += 1;
-    } else {
+  if(existingItem){
+   //Se o item já existe, aumenta apenas a quantidade + 1 
+   existingItem.quantity += 1;
 
-        cart.push({
-            name,
-            price,
-            quantity: 1,
+  }else{
 
-            
-        })
+    cart.push({
+      name,
+      price,
+      quantity: 1,
+    })
 
-    }
-    Toastify({
-        text:  "Adicionado ao Carinho!",
-        duration: 5000,
-        close: true,
-        gravity: "top", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
-        style: {
-            background: "#0c4203",
-        },
-    }).showToast();
+  }
 
-    updateCartModal()
+  updateCartModal()
+
 }
 
 
-//Atualiza do carrinho
+//Atualiza o carrinho
 function updateCartModal(){
-    cartItemContainer.innerHTML = "";
-    let total = 0;
+  cartItemsContainer.innerHTML = "";
+  let total = 0;
 
-    cart.forEach(item => {
-        const cartItemElement = document.createElement("div");
-        cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col", "bg-gray-300");
+  cart.forEach(item => {
+    const cartItemElement = document.createElement("div");
+    cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col")
 
-        cartItemElement.innerHTML = `
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="font-bold">${item.name}</p>
-                    <p>Qtd: ${item.quantity}</p>
-                    <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
-                </div>
-            
-                <div>
-                    <button class="remove-from-cart-btn" data-name="${item.name}">
-                        Remover
-                    </button>
-                </div>
-            </div>
-            
-        `
+    cartItemElement.innerHTML = `
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="font-medium">${item.name}</p>
+          <p>Qtd: ${item.quantity}</p>
+          <p class="font-medium mt-2">R$ ${item.price.toFixed(2)}</p>
+        </div>
 
-        // Adiciona um ouvinte de evento para remover o item do carrinho
-        const removeButton = cartItemElement.querySelector('.remove-from-cart-btn');
-        removeButton.addEventListener('click', () => {
-            // Remove o item do carrinho
-            const itemName = removeButton.getAttribute('data-name');
-            const index = cart.findIndex(item => item.name === itemName);
-            if (index !== -1) {
-                cart.splice(index, 1);
-                // Atualiza o modal do carrinho
-                updateCartModal();
-                // Exibe o Toastify após a remoção do item
-                Toastify({
-                    text: "Item removido do carrinho!",
-                    duration: 4000,
-                    close: true,
-                    gravity: "top", // `top` or `bottom`
-                    position: "right", // `left`, `center` or `right`
-                    stopOnFocus: true, // Prevents dismissing of toast on hover
-                    style: {
-                        background: "#b3121d",
-                    },
-                }).showToast();
-            }
-        });
-        
 
-        total += item.price * item.quantity;
+        <button class="remove-from-cart-btn" data-name="${item.name}">
+          Remover
+        </button>
 
-        cartItemContainer.appendChild(cartItemElement);
-    });
+      </div>
+    `
 
-    cartTotal.textContent = total.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    });
+    total += item.price * item.quantity;
 
-    cartCounter.innerHTML = cart.length;
+    cartItemsContainer.appendChild(cartItemElement)
+
+  })
+
+  cartTotal.textContent = total.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL"
+  });
+
+  cartCounter.innerHTML = cart.length;
+
 }
 
 
+// Função para remover o item do carrinho
+cartItemsContainer.addEventListener("click", function (event){
+  if(event.target.classList.contains("remove-from-cart-btn")){
+    const name = event.target.getAttribute("data-name")
 
-//Funçaõ pra remover item do carrinho
-cartItemContainer.addEventListener("click", function(event){
-    if(event.target.classList.contains("remove-from-cart-btn")){
-        const name = event.target.getAttribute("data-name")
+    removeItemCart(name);
+  }
 
-
-        removeItemCart(name);
-    }
 })
 
 function removeItemCart(name){
-    const index = cart.findIndex(item => item.name === name);
+  const index = cart.findIndex(item => item.name === name);
 
-    if(index !== -1){
-        const item = cart[index];
-        
-        if(item.quantity > 1){
-            item.quantity -= 1;
-            updateCartModal();
-            return;
-        }
-
-        cart.splice(index, 1);
-        updateCartModal();
-    }
-}
-
-
-
-andressInput.addEventListener("input", function(event){
-    let inputValue = event.target.value;
-
-    if(inputValue !== ""){
-        andressInput.classList.remove("border-red-500")
-        addressWarn.classList.add("hidden")
-    }
-})
-
-
-//Finalizar pedido
-checkountBtn.addEventListener("click", function(){
-
-    const isOpen = checkRestaurantOpen();
-    if(!isOpen){
-        
-        Toastify({
-            text: "Estammos fechado no momento!",
-            duration: 3000,
-            close: true,
-            gravity: "top", // `top` or `bottom`
-            position: "right", // `left`, `center` or `right`
-            stopOnFocus: true, // Prevents dismissing of toast on hover
-            style: {
-                background: "#ef4444",
-            },
-        }).showToast();
-        return;
+  if(index !== -1){
+    const item = cart[index];
+    
+    if(item.quantity > 1){
+      item.quantity -= 1;
+      updateCartModal();
+      return;
     }
 
-    if(cart.length === 0) return;
-    if(andressInput.value === ""){
-        addressWarn.classList.remove("hidden")
-        andressInput.classList.add("border-red-500")
-    }
-
-    //Enviar o pedodp para api whats
-    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-
-    // Formatando a mensagem com os itens do carrinho e o valor total
-    const cartItemsFormatted = cart.map((item) => {
-        // Formatando o nome em negrito e adicionando quebra de linha
-        return `*${item.name}* \nQtd: (${item.quantity}) \nValor: R$${item.price.toFixed(2)} \n\n`;
-    }).join("") + `*Total:* R$${total.toFixed(2)} \n\n`;
-
-    // Codificando a mensagem para URL
-    const encodedMessage = encodeURIComponent(cartItemsFormatted);
-
-    // Número de telefone para o WhatsApp
-    const phoneNumber = "64992580980";
-
-    // Formatando o endereço em negrito
-    const formattedAddress = `*Endereço:* ${andressInput.value}`;
-
-    // Construindo o link do WhatsApp com a mensagem e o endereço
-    const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodedMessage} ${formattedAddress}`;
-
-    // Abrindo uma nova janela com o link do WhatsApp
-    window.open(whatsappLink, "_blank");
-
-    // Limpando o carrinho
-    cart = [];
-
-    // Atualizando a exibição do carrinho, se necessário
+    cart.splice(index, 1);
     updateCartModal();
 
+  }
+
+}
+
+
+addressInput.addEventListener("input", function(event){
+  let inputValue = event.target.value;
+
+  if(inputValue !== ""){
+    addressInput.classList.remove("border-red-500")
+    addressWarn.classList.add("hidden")
+  }
+
+
 })
 
 
-// Verificar hora do card
-function checkRestaurantOpen(){
+// Finalizar pedido
+checkoutBtn.addEventListener("click", function(){
 
-    const data = new Date();
-    const hora = data.getHours();
-    return hora >= 10 && hora < 23;
-    //Restaurante esta aberto
+  const isOpen = checkRestaurantOpen();
+  if(!isOpen){
+
+    Toastify({
+      text: "Ops o restaurante está fechado!",
+      duration: 3000,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "#ef4444",
+      },
+    }).showToast();
+
+    return;
+  }
+
+  if(cart.length === 0) return;
+  if(addressInput.value === ""){
+    addressWarn.classList.remove("hidden")
+    addressInput.classList.add("border-red-500")
+    return;
+  }
+
+  //Enviar o pedido para api whats
+  const cartItems = cart.map((item) => {
+    return (
+      ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
+    )
+  }).join("")
+
+  const message = encodeURIComponent(cartItems)
+  const phone = "NUMERO_DO_TELEFONE"
+
+  window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
+
+  cart = [];
+  updateCartModal();
+
+})
+
+
+// Verificar a hora e manipular o card horario
+function checkRestaurantOpen(){
+  const data = new Date();
+  const hora = data.getHours();
+  return hora >= 18 && hora < 22; 
+  //true = restaurante está aberto 
 }
+
 
 const spanItem = document.getElementById("date-span")
 const isOpen = checkRestaurantOpen();
 
 if(isOpen){
-    spanItem.classList.remove("bg-red-500")
-    spanItem.classList.add("bg-green-600")
-}else {
-    spanItem.classList.remove("bg-green-600")
-    spanItem.classList.add("bg-red-500")
+  spanItem.classList.remove("bg-red-500");
+  spanItem.classList.add("bg-green-600")
+}else{
+  spanItem.classList.remove("bg-green-600")
+  spanItem.classList.add("bg-red-500")
 }

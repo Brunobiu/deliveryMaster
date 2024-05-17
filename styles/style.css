@@ -3,22 +3,5 @@
 @tailwind utilities;
 
 body{
-    background-color: F6F7F8;
+  background-color: #F6F7F8;
 }
-
-.floating-btn {
-    position: fixed;
-    bottom: 0px; /* Distância do botão até a parte inferior da página */
-    left: 0px; /* Distância do botão até a margem esquerda da página */
-    background-color: #107a0e; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para um efeito visual */
-    z-index: 999; /* Garante que o botão fique sobre outros elementos */
-}
-
-
-
