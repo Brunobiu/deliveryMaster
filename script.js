@@ -38,6 +38,18 @@ menu.addEventListener("click", function(event){
     const name = parentButton.getAttribute("data-name")
     const price = parseFloat(parentButton.getAttribute("data-price"))
     addToCart(name, price)
+
+    Toastify({
+      text: "Adicionado ao carinho",
+      duration: 1500,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "left", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "#3da142",
+      },
+    }).showToast();
   }
 
 })
@@ -71,6 +83,8 @@ function updateCartModal(){
   cartItemsContainer.innerHTML = "";
   let total = 0;
 
+  
+
   cart.forEach(item => {
     const cartItemElement = document.createElement("div");
     cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col")
@@ -91,9 +105,14 @@ function updateCartModal(){
       </div>
     `
 
+    
+
     total += item.price * item.quantity;
 
     cartItemsContainer.appendChild(cartItemElement)
+
+        
+    
 
   })
 
@@ -185,7 +204,7 @@ checkoutBtn.addEventListener("click", function(){
   }).join("")
 
   const message = encodeURIComponent(cartItems)
-  const phone = "NUMERO_DO_TELEFONE"
+  const phone = "64992580980"
 
   window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
 
@@ -199,7 +218,7 @@ checkoutBtn.addEventListener("click", function(){
 function checkRestaurantOpen(){
   const data = new Date();
   const hora = data.getHours();
-  return hora >= 18 && hora < 22; 
+  return hora >= 15 && hora < 22; 
   //true = restaurante está aberto 
 }
 
@@ -214,3 +233,15 @@ if(isOpen){
   spanItem.classList.remove("bg-green-600")
   spanItem.classList.add("bg-red-500")
 }
+
+
+// Script para ajustar o modal quando o input está focado
+const inputs = document.querySelectorAll('input');
+inputs.forEach(input => {
+  input.addEventListener('focus', () => {
+    document.querySelector('.bg-white').classList.add('modal-focused');
+  });
+  input.addEventListener('blur', () => {
+    document.querySelector('.bg-white').classList.remove('modal-focused');
+  });
+});
