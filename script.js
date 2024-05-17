@@ -10,6 +10,8 @@ const addressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
 
 
+
+
 let cart = [];
 
 // Abrir o modal do carrinho
@@ -195,6 +197,7 @@ checkoutBtn.addEventListener("click", function(){
     addressInput.classList.add("border-red-500")
     return;
   }
+
 
   //Enviar o pedido para api whats
   const cartItems = cart.map((item) => {
