@@ -200,19 +200,33 @@ checkoutBtn.addEventListener("click", function(){
 
 
   //Enviar o pedido para api whats
-  const cartItems = cart.map((item) => {
-    return (
-      ` ${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price} |`
-    )
-  }).join("")
+// Montar a mensagem formatada para enviar via WhatsApp
+const cartItemsFormatted = cart.map((item) => {
+  const totalItemPrice = item.quantity * item.price;
+  return (
+    `*${item.name}*` + "\n" +
+    `Quantidade: ${item.quantity}` + "\n" +
+    `Valor por unidade: R$${item.price.toFixed(2)}` + "\n" +
+    `Total: R$${totalItemPrice.toFixed(2)}` + "\n\n"
+  );
+}).join("");
 
-  const message = encodeURIComponent(cartItems)
-  const phone = "64992580980"
+const totalCartPrice = cart.reduce((acc, item) => acc + (item.quantity * item.price), 0).toFixed(2);
 
-  window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blank")
+const message = encodeURIComponent(
+  `Pedido:\n\n${cartItemsFormatted}` +
+  `Endereço de entrega: ${addressInput.value}\n\n` +
+  `Total do pedido: R$${totalCartPrice}`
+);
+const phone = "64992580980";
 
-  cart = [];
-  updateCartModal();
+// Abrir o link do WhatsApp com a mensagem formatada
+window.open(`https://wa.me/${phone}?text=${message}`, "_blank");
+
+// Limpar o carrinho e atualizar o modal do carrinho
+cart = [];
+updateCartModal();
+
 
 })
 
