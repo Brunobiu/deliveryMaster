@@ -231,13 +231,13 @@ updateCartModal();
 })
 
 
-// Verificar a hora e manipular o card horario
-//function checkRestaurantOpen(){
-  //const data = new Date();
-  //const hora = data.getHours();
-  //return hora >= 13 && hora < 23; 
- ////////////// //true = restaurante está aberto 
-//}
+ //Verificar a hora e manipular o card horario
+function checkRestaurantOpen(){
+  const data = new Date();
+  const hora = data.getHours();
+  return hora >= 1 && hora < 23; 
+ //true = restaurante está aberto 
+}
 
 
 const spanItem = document.getElementById("date-span")
