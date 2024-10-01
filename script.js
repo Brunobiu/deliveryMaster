@@ -177,8 +177,8 @@ checkoutBtn.addEventListener("click", function(){
   if(!isOpen){
 
     Toastify({
-      text: "Ops o restaurante está fechado!",
-      duration: 3000,
+      text: "Horário de agendamento das 08:00 as 23:00 !",
+      duration: 6000,
       close: true,
       gravity: "top", // `top` or `bottom`
       position: "right", // `left`, `center` or `right`
@@ -232,12 +232,12 @@ updateCartModal();
 
 
  //Verificar a hora e manipular o card horario
-function checkRestaurantOpen(){
-  const data = new Date();
-  const hora = data.getHours();
-  return hora >= 1 && hora < 23; 
+//function checkRestaurantOpen(){
+ // const data = new Date();
+ // const hora = data.getHours();
+ // return hora >= 1 && hora < 23; 
  //true = restaurante está aberto 
-}
+//}
 
 
 const spanItem = document.getElementById("date-span")
@@ -262,3 +262,20 @@ inputs.forEach(input => {
     document.querySelector('.bg-white').classList.remove('modal-focused');
   });
 });
+
+
+
+
+
+  function showWarning() {
+    const select = document.getElementById("horario-select");
+    const warning = document.getElementById("horario-warning");
+
+    // Verifica se um horário foi selecionado
+    if (select.value) {
+      warning.textContent = "Atenção: Vamos verificar a disponibilidade desse horário " + select.value + ". Qualquer coisa, entraremos em contato para trocar o horário. ";
+      warning.classList.remove("hidden");
+    } else {
+      warning.classList.add("hidden");
+    }
+  }

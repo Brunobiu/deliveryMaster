@@ -24,221 +24,324 @@
 
   <link rel="stylesheet" href="./styles/output.css" />
 
-  <title>Dev Burguer - A melhor hamburgueria dev!</title>
+  <title>Burguer!</title>
 </head>
 <body>
   
   <!-- HEADER -->
   <header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
-    <div class="w-full h-full flex flex-col justify-center items-center">
-      <img 
+    <div class="w-full h-full flex flex-col justify-between items-center">
+      <!--<img 
         src="./assets/hamb-1.png"
         alt="Logo DevBurguer"
         class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"
-      />
-      <h1 class="text-4xl mt-4 mb-2 font-bold text-white">
-        Dev Burguer
-      </h1>
+      />-->
+      <!--<h1 class="text-4xl mt-4 mb-2 font-bold text-white">
+        D'limas
+      </h1>-->
 
-      <span class="text-white font-medium">Rua dev 10, Campo Grande - MS</span>
+      <!--<span class="text-white font-medium">Rua dev 10, Goiania - GO</span>-->
 
-      <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
-        <span class="text-white font-medium">Seg á Dom - 18:00 as 22:00</span>
+      <div class="bg-green-600 px-4 py-1 rounded-lg mt-auto mb-5" id="date-span">
+        <span class="text-white font-medium">Seg á Sabado - 09:00 as 19:00</span>
       </div>
 
     </div>
-  </header>
-  <!-- FIM HEADER -->
-  
-  <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
-    Conheça nosso menu
-  </h2>
+</header>
 
-  <!-- INICIO MENU -->
-  <div id="menu">
-    
+
+  <!-- FIM HEADER -->
+  <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+    Serviços de Corte e Estilo
+</h2>
+
+<!-- INICIO MENU -->
+<div id="menu">
+
     <main class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16">
 
-      <!-- PRODUTO ITEM -->
-      <div class="flex gap-2">
-        <img 
-          src="./assets/hamb-1.png"
-          alt="Hamburuger Smash"
-          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-        />
+        <!-- PRODUTO ITEM -->
+        <div class="flex gap-2">
+            <img 
+                src="./assets/hamb-1.png"
+                alt="Hamburuger Smash"
+                class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
 
-        <div>
-          <p class="font-bold">Hamburguer Smash</p>
-          <p class="text-sm">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
+            <div>
+                <p class="font-bold">Cortes de Cabelo</p>
+                <p class="text-sm">Corte de cabelo personalizado para atender ao cliente, mantendo um visual limpo e bem cuidado.</p>
 
-          <div class="flex items-center gap-2 justify-between mt-3">
-            <p class="font-bold text-lg">R$ 18.90</p>
-            <button 
-              class="bg-gray-900 px-5 rounded add-to-cart-btn"
-              data-name="Hamburguer Smash"
-              data-price="18.90"
-            >
-              <i class="fa fa-cart-plus text-lg text-white"></i>
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-      <!-- FIM PRODUTO ITEM -->
-
-      <!-- PRODUTO ITEM -->
-      <div class="flex gap-2">
-        <img 
-          src="./assets/hamb-2.png"
-          alt="Hamburuger Duplo"
-          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-        />
-
-        <div>
-          <p class="font-bold">Hamburuger Duplo</p>
-          <p class="text-sm">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
-
-          <div class="flex items-center gap-2 justify-between mt-3">
-            <p class="font-bold text-lg">R$ 32.90</p>
-            <button 
-              class="bg-gray-900 px-5 rounded add-to-cart-btn"
-              data-name="Hamburuger Duplo"
-              data-price="32.90"
-            >
-              <i class="fa fa-cart-plus text-lg text-white"></i>
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-      <!-- FIM PRODUTO ITEM -->
-
-
-      <!-- PRODUTO ITEM -->
-      <div class="flex gap-2">
-        <img 
-          src="./assets/hamb-3.png"
-          alt="Hamburuger Salad"
-          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-        />
-
-        <div>
-          <p class="font-bold">Hamburuger Salad</p>
-          <p class="text-sm">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
-
-          <div class="flex items-center gap-2 justify-between mt-3">
-            <p class="font-bold text-lg">R$ 35.90</p>
-            <button 
-              class="bg-gray-900 px-5 rounded add-to-cart-btn"
-              data-name="Hamburuger Salad"
-              data-price="35.90"
-            >
-              <i class="fa fa-cart-plus text-lg text-white"></i>
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-      <!-- FIM PRODUTO ITEM -->      
-
-      <!-- PRODUTO ITEM -->
-      <div class="flex gap-2">
-        <img 
-          src="./assets/hamb-4.png"
-          alt="Hamburuger da casa"
-          class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-        />
-
-        <div>
-          <p class="font-bold">Hamburuger da casa</p>
-          <p class="text-sm">Pão levinho de fermentação natural da Trigou, burger 160g, queijo prato e maionese da casa.</p>
-
-          <div class="flex items-center gap-2 justify-between mt-3">
-            <p class="font-bold text-lg">R$ 30</p>
-            <button 
-              class="bg-gray-900 px-5 rounded add-to-cart-btn"
-              data-name="Hamburuger da casa"
-              data-price="30"
-            >
-              <i class="fa fa-cart-plus text-lg text-white"></i>
-            </button>
-          </div>
-
-        </div>
-
-      </div>
-      <!-- FIM PRODUTO ITEM -->  
-
-    </main>
-
-    <div class="mx-auto max-w-7xl px-2 my-2">
-      <h2 class="font-bold text-3xl">
-        Bebidas
-      </h2>
-    </div>
-
-    <!-- GRID BEBIDAS -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-10 mx-auto max-w-7xl px-2 mb-16" id="menu">
-        
-      <!-- BEBIDA ITEM -->
-        <div class="flex gap-2 w-full">
-          <img 
-            src="./assets/refri-1.png"
-            alt="Coca lata"
-            class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-          />
-  
-          <div class="w-full">
-            <p class="font-bold">Coca lata</p>
-  
-            <div class="flex items-center gap-2 justify-between mt-3">
-              <p class="font-bold text-lg">R$ 6</p>
-              <button 
-                class="bg-gray-900 px-5 rounded add-to-cart-btn"
-                data-name="Coca lata"
-                data-price="6"
-              >
-                <i class="fa fa-cart-plus text-lg text-white"></i>
-              </button>
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 30.00</p>
+                    <button 
+                        class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                        data-name="Hamburguer Smash"
+                        data-price="18.90"
+                    >
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
             </div>
-  
-          </div>
-  
         </div>
-        <!-- FIM BEBIDA ITEM --> 
+        <!-- FIM PRODUTO ITEM -->
 
-      <!-- BEBIDA ITEM -->
-      <div class="flex gap-2 w-full">
-        <img 
-          src="./assets/refri-2.png"
-          alt="Guaraná lata"
+        <!-- PRODUTO ITEM -->
+        <div class="flex gap-2">
+            <img 
+                src="./assets/hamb-2.png"
+                alt="Hamburuger Duplo"
+                class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+
+            <div>
+                <p class="font-bold">Barba</p>
+                <p class="text-sm">Modelagem, alinhamento da barba, proporcionando um visual definido e com acabamento preciso.</p>
+
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 25.00</p>
+                    <button 
+                        class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                        data-name="Hamburuger Duplo"
+                        data-price="32.90"
+                    >
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- FIM PRODUTO ITEM -->
+
+        <!-- PRODUTO ITEM -->
+        <div class="flex gap-2">
+            <img 
+                src="./assets/SOBRANCELHA.jpg"
+                alt="Hamburuger Salad"
+                class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+
+            <div>
+                <p class="font-bold">Sobrancelha</p>
+                <p class="text-sm">Limpeza e alinhamento da sobrancelha, mantendo a aparência natural e harmônica do rosto.</p>
+
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 10.00</p>
+                    <button 
+                        class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                        data-name="Hamburguer Salad"
+                        data-price="35.90"
+                    >
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- FIM PRODUTO ITEM -->
+
+        <!-- PRODUTO ITEM -->
+        <div class="flex gap-2">
+            <img 
+                src="./assets/hamb-3.png"
+                alt="Hamburuger Salad"
+                class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+            />
+
+            <div>
+                <p class="font-bold">Desenhos</p>
+                <p class="text-sm">Limpeza e alinhamento da sobrancelha, mantendo a aparência natural e harmônica do rosto.</p>
+
+                <div class="flex items-center gap-2 justify-between mt-3">
+                    <p class="font-bold text-lg">R$ 8.00</p>
+                    <button 
+                        class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                        data-name="Hamburguer Salad"
+                        data-price="35.90"
+                    >
+                        <i class="fa fa-cart-plus text-lg text-white"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- FIM PRODUTO ITEM -->
+
+    
+    <!-- FIM MENU -->
+
+    
+
+
+    <h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+      Cuidados Capilares
+  </h2>
+  
+  <!-- PRODUTO ITEM -->
+  <div class="flex gap-2">
+      <img 
+          src="./assets/Selagem-Masculina.jpg"
+          alt="Hamburguer da casa"
           class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
-        />
+      />
 
-        <div class="w-full">
-          <p class="font-bold">Guaraná lata</p>
+      <div>
+          <p class="font-bold">Alisamento</p>
+          <p class="text-sm">Técnica de alisamento capilar para fios mais lisos e disciplinados, garantindo um visual moderno e elegante.</p>
 
           <div class="flex items-center gap-2 justify-between mt-3">
-            <p class="font-bold text-lg">R$ 6</p>
-            <button 
-              class="bg-gray-900 px-5 rounded add-to-cart-btn"
-              data-name="Guarana lata"
-              data-price="6"
-            >
-              <i class="fa fa-cart-plus text-lg text-white"></i>
-            </button>
+              <p class="font-bold text-lg">R$ 50.00</p>
+              <button 
+                  class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                  data-name="Hamburguer da casa"
+                  data-price="30"
+              >
+                  <i class="fa fa-cart-plus text-lg text-white"></i>
+              </button>
           </div>
-
-        </div>
-
       </div>
-      <!-- FIM BEBIDA ITEM -->         
+  </div>
 
+  <div class="flex gap-2">
+    <img 
+        src="./assets/nevou.jpg"
+        alt="Hamburguer da casa"
+        class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+    />
+
+    <div>
+        <p class="font-bold">Pintura de Cabelo (Nevou)</p>
+        <p class="text-sm"> Coloração dos cabelos, seja para cobrir fios brancos ou para mudar completamente o estilo com cores novas e vibrantes.</p>
+
+        <div class="flex items-center gap-2 justify-between mt-3">
+            <p class="font-bold text-lg">R$ 80.00</p>
+            <button 
+                class="bg-gray-900 px-5 rounded add-to-cart-btn"
+                data-name="Hamburguer da casa"
+                data-price="30"
+            >
+                <i class="fa fa-cart-plus text-lg text-white"></i>
+            </button>
+        </div>
     </div>
-    <!-- FIM GRID BEBIDAS -->
+</div>
+
+
+<div class="flex gap-2">
+  <img 
+      src="./assets/pigmentação.jpg"
+      alt="Hamburguer da casa"
+      class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+  />
+
+  <div>
+      <p class="font-bold">Pigmentação</p>
+      <p class="text-sm"> Coloração dos cabelos, seja para cobrir fios brancos ou para mudar completamente o estilo com cores novas e vibrantes.</p>
+
+      <div class="flex items-center gap-2 justify-between mt-3">
+          <p class="font-bold text-lg">R$ 40.00</p>
+          <button 
+              class="bg-gray-900 px-5 rounded add-to-cart-btn"
+              data-name="Hamburguer da casa"
+              data-price="30"
+          >
+              <i class="fa fa-cart-plus text-lg text-white"></i>
+          </button>
+      </div>
+  </div>
+</div>
+
+
+<div class="flex gap-2">
+  <img 
+      src="./assets/luzes.jpg"
+      alt="Hamburguer da casa"
+      class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+  />
+
+  <div>
+      <p class="font-bold">Luzes</p>
+      <p class="text-sm"> Coloração dos cabelos, seja para cobrir fios brancos ou para mudar completamente o estilo com cores novas e vibrantes.</p>
+
+      <div class="flex items-center gap-2 justify-between mt-3">
+          <p class="font-bold text-lg">R$ 80.00</p>
+          <button 
+              class="bg-gray-900 px-5 rounded add-to-cart-btn"
+              data-name="Hamburguer da casa"
+              data-price="30"
+          >
+              <i class="fa fa-cart-plus text-lg text-white"></i>
+          </button>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<h2 class="text-2xl md:text-3xl font-bold text-center mt-9 mb-6">
+  Tratamentos Faciais
+</h2>
+
+<!-- PRODUTO ITEM -->
+<div class="flex gap-2">
+  <img 
+      src="./assets/hamb-4.png"
+      alt="Hamburguer da casa"
+      class="w-28 h-28 rounded-md hover:scale-110 hover:-rotate-2 duration-300"
+  />
+
+  <div>
+      <p class="font-bold">Limpeza de Pele</p>
+      <p class="text-sm">Tratamento para remoção de impurezas, cravos e excesso de oleosidade, deixando a pele mais saudável e revitalizada.</p>
+
+      <div class="flex items-center gap-2 justify-between mt-3">
+          <p class="font-bold text-lg">R$ 50.00</p>
+          <button 
+              class="bg-gray-900 px-5 rounded add-to-cart-btn"
+              data-name="Hamburguer da casa"
+              data-price="30"
+          >
+              <i class="fa fa-cart-plus text-lg text-white"></i>
+          </button>
+      </div>
+  </div>
+</div>
+<!-- FIM PRODUTO ITEM -->  
+
+
+
+</div> <!-- Certifique-se de fechar a div do menu -->
+
+
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   </div>
   <!-- FIM MENU -->
@@ -247,34 +350,94 @@
   <div 
   class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] flex items-center justify-center hidden"
   id="cart-modal"
-  >
+>
+  <div class="bg-white p-5 rounded-md w-full max-w-[90%] h-auto sm:max-w-[640px] mx-auto overflow-hidden">
+    <h2 class="text-center font-bold text-2xl mb-2">Meu agendamento</h2>
 
-    <div class="bg-white p-5 rounded-md w-full max-w-[90%] h-[80vh] sm:max-w-[640px] sm:h-auto mx-auto overflow-auto">
-      <h2 class="text-center font-bold text-2xl mb-2">Meu carrinho</h2>
+    <div id="cart-items" class="flex justify-between mb-2 flex-col max-h-[200px] overflow-auto"></div>
 
-      <div id="cart-items" class="flex justify-between mb-2 flex-col max-h-[200px] overflow-auto color: #9ca3af"></div>
+    <p class="font-bold">Valor: <span id="cart-total">0.00</span></p>
 
-      <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
-
-
-
-      <p class="font-bold mt-4">Endereço de entrega:</p>
+    <!-- Container para campos do formulário -->
+    <div class="max-h-[60vh] overflow-y-auto mb-4">
+      <p class="font-bold mt-4">Nome:</p>
       <input 
         type="text"
-        placeholder="Digite seu endereço completo..."
-        id="address"
+        placeholder="Digite seu nome ou apelido..."
+        id="name"
         class="w-full border-2 p-1 rounded my-1"
       />
-      <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
 
-      <div class="flex items-center justify-between mt-5 w-full">
-        <button id="close-modal-btn">Fechar</button>
-        <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Finalizar pedido</button>
+      <p class="font-bold mt-4">WhatsApp:</p>
+      <input 
+        type="tel"
+        placeholder="Digite seu WhatsApp..."
+        id="whatsapp"
+        class="w-full border-2 p-1 rounded my-1"
+      />
+
+      <p class="font-bold mt-4">Data e Horário:</p>
+      <div class="flex justify-between">
+        <input 
+          type="date"
+          id="appointment-date"
+          class="border-2 p-1 rounded my-1 w-[48%]" 
+        />
+        <select
+          id="horario-select"
+          class="border-2 p-1 rounded my-1 w-[48%]" 
+          onchange="showWarning()"
+        >
+          <option value="">Selecione um horário</option>
+          <option value="09:30">09:30</option>
+          <option value="10:00">10:00</option>
+          <option value="10:30">10:30</option>
+          <option value="11:00">11:00</option>
+          <option value="11:30">11:30</option>
+          <option value="12:00">12:00</option>
+          <option value="12:30">12:30</option>
+          <option value="13:00">13:00</option>
+          <option value="13:30">13:30</option>
+          <option value="14:00">14:00</option>
+          <option value="14:30">14:30</option>
+          <option value="15:00">15:00</option>
+          <option value="15:30">15:30</option>
+          <option value="16:00">16:00</option>
+          <option value="16:30">16:30</option>
+          <option value="17:00">17:00</option>
+          <option value="17:30">17:30</option>
+          <option value="18:00">18:00</option>
+        </select>
       </div>
 
+      <p class="font-bold mt-4">Profissional:</p>
+      <select
+        id="profissional-select"
+        class="w-full border-2 p-1 rounded my-1"
+      >
+        <option value="">Escolha o profissional</option>
+        <option value="douglas">Douglas</option>
+        <option value="bruno">Bruno</option>
+        <option value="qualquer-um">Qualquer um!</option>
+      </select>
+
+      <!-- Aviso que será exibido após selecionar um horário -->
+      <p id="horario-warning" class="text-red-500 mt-2 hidden">Escolha um horário para prosseguir.</p>
+
+      <p class="text-red-500 hidden" id="address-warn">Digite seu nome completo</p>
     </div>
 
+    <div class="flex items-center justify-between mt-5 w-full">
+      <button id="close-modal-btn" class="border rounded p-2">Fechar</button>
+      <button id="checkout-btn" class="bg-green-500 text-white px-4 py-1 rounded">Agendar</button>
+    </div>
   </div>
+</div>
+
+
+
+
+
   <!-- FIM MODAL CART -->
 
   <!-- BUTTON CART FOOTER -->
@@ -283,8 +446,8 @@
       class="flex items-center gap-2 text-white font-bold"
       id="cart-btn"
     >
-      (<span id="cart-count">0</span>)
-      Veja meu carrinho
+      <span id="cart-count"></span>
+      AGENDAR
       <i class="fa fa-cart-plus text-lg text-white"></i>
     </button>
   </footer>
